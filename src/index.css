@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  margin: 0;
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  --tw-gradient-stops: cyan 100%, var(--tw-gradient-to, transparent) 0;
+  --tw-gradient-stops: rgb(160, 118, 118), var(--tw-gradient-stops, transparent);
+  --tw-gradient-stops: rgb(97, 129, 129) 100%, var(--tw-gradient-stops, transparent);
+}
+li {
+  list-style: none;
+}
+html {
+  scroll-behavior: smooth;
+ }
