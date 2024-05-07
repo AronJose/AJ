@@ -9,11 +9,11 @@ function Header() {
   };
 
   return (
-    <div className="bg-white shadow-md md:flex md:justify-between md:items-center md:h-20 fixed top-0 left-0 w-full z-50">
+    <div className="bg-white shadow-2xl md:bg-blend-darken md:flex md:justify-between md:items-center md:h-20 fixed top-0 left-0 w-full z-50">
       <div className="flex justify-between items-center px-4 py-3 md:px-10">
         <div className="flex-shrink-0">
           <div className="">
-            <img src={ aj} alt="" className="w-[80px] h-[70px] rounded-full"/>
+            <img src={aj} alt="" className="w-[80px] h-[70px] rounded-full" />
           </div>
         </div>
         <div className="md:hidden">
