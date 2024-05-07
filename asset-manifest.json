@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/AJ/static/css/main.53e5611c.css",
+    "main.js": "/AJ/static/js/main.3baaacf7.js",
+    "static/media/aron.jpg": "/AJ/static/media/aron.0542fbc4265329ca4890.jpg",
+    "static/media/work-bg.png": "/AJ/static/media/work-bg.72714aa956f2c0dc9dbf.png",
+    "static/media/React.png": "/AJ/static/media/React.cea1e95dbec355de1121.png",
+    "static/media/uiux.jpg": "/AJ/static/media/uiux.8df78ee7d7405d1eee4e.jpg",
+    "static/media/BackEnd.svg": "/AJ/static/media/BackEnd.fd84f8c2b4acd6aaaa349b69903ad097.svg",
+    "static/media/frontend.jpg": "/AJ/static/media/frontend.5b4dfd1efc651f721ef9.jpg",
+    "static/media/angular.png": "/AJ/static/media/angular.82b00f89515f0a7cd195.png",
+    "static/media/2.png": "/AJ/static/media/2.e13dcb6d4df74fcdac58.png",
+    "static/media/5.png": "/AJ/static/media/5.420bb890f0c516493000.png",
+    "static/media/3.png": "/AJ/static/media/3.b511076582c10309208a.png",
+    "static/media/4.png": "/AJ/static/media/4.b41f79a53a6729fe338f.png",
+    "static/media/6.png": "/AJ/static/media/6.130bf2a306d8076e1ed4.png",
+    "static/media/materialui.png": "/AJ/static/media/materialui.66e622ca2d5c1c70a5fd.png",
+    "static/media/innovature.png": "/AJ/static/media/innovature.25f304fe7c784c648221.png",
+    "static/media/1.png": "/AJ/static/media/1.5adfbc2584f4289cdd24.png",
+    "static/media/bg.jpg": "/AJ/static/media/bg.2dfc2d2f6e85e683e11a.jpg",
+    "static/media/netflix.webp": "/AJ/static/media/netflix.9487878a06686a2972e4.webp",
+    "static/media/html.png": "/AJ/static/media/html.cb109c10d801d5178465.png",
+    "static/media/phone.jpg": "/AJ/static/media/phone.2670b21a5aa7b3876ba1.jpg",
+    "static/media/tailwindcss.png": "/AJ/static/media/tailwindcss.db57d85a2a71027c6bd2.png",
+    "static/media/software.avif": "/AJ/static/media/software.02df784ad8490b7c12d0.avif",
+    "static/media/slick.svg": "/AJ/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/AJ/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/AJ/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/AJ/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/AJ/index.html",
+    "main.53e5611c.css.map": "/AJ/static/css/main.53e5611c.css.map",
+    "main.3baaacf7.js.map": "/AJ/static/js/main.3baaacf7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.53e5611c.css",
+    "static/js/main.3baaacf7.js"
+  ]
+}
