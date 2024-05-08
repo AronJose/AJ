@@ -1,9 +1,10 @@
 {
   "files": {
-    "main.css": "/AJ/static/css/main.53e5611c.css",
-    "main.js": "/AJ/static/js/main.3baaacf7.js",
+    "main.css": "/AJ/static/css/main.c30ff204.css",
+    "main.js": "/AJ/static/js/main.62f086fb.js",
     "static/media/aron.jpg": "/AJ/static/media/aron.0542fbc4265329ca4890.jpg",
     "static/media/work-bg.png": "/AJ/static/media/work-bg.72714aa956f2c0dc9dbf.png",
+    "static/media/netflix.png": "/AJ/static/media/netflix.ab87f674dec0d2c31cc4.png",
     "static/media/React.png": "/AJ/static/media/React.cea1e95dbec355de1121.png",
     "static/media/uiux.jpg": "/AJ/static/media/uiux.8df78ee7d7405d1eee4e.jpg",
     "static/media/BackEnd.svg": "/AJ/static/media/BackEnd.fd84f8c2b4acd6aaaa349b69903ad097.svg",
@@ -16,9 +17,9 @@
     "static/media/6.png": "/AJ/static/media/6.130bf2a306d8076e1ed4.png",
     "static/media/materialui.png": "/AJ/static/media/materialui.66e622ca2d5c1c70a5fd.png",
     "static/media/innovature.png": "/AJ/static/media/innovature.25f304fe7c784c648221.png",
+    "static/media/Todo.png": "/AJ/static/media/Todo.906c2f0329a803b794a1.png",
     "static/media/1.png": "/AJ/static/media/1.5adfbc2584f4289cdd24.png",
     "static/media/bg.jpg": "/AJ/static/media/bg.2dfc2d2f6e85e683e11a.jpg",
-    "static/media/netflix.webp": "/AJ/static/media/netflix.9487878a06686a2972e4.webp",
     "static/media/html.png": "/AJ/static/media/html.cb109c10d801d5178465.png",
     "static/media/phone.jpg": "/AJ/static/media/phone.2670b21a5aa7b3876ba1.jpg",
     "static/media/tailwindcss.png": "/AJ/static/media/tailwindcss.db57d85a2a71027c6bd2.png",
@@ -28,11 +29,11 @@
     "static/media/slick.ttf": "/AJ/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/AJ/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/AJ/index.html",
-    "main.53e5611c.css.map": "/AJ/static/css/main.53e5611c.css.map",
-    "main.3baaacf7.js.map": "/AJ/static/js/main.3baaacf7.js.map"
+    "main.c30ff204.css.map": "/AJ/static/css/main.c30ff204.css.map",
+    "main.62f086fb.js.map": "/AJ/static/js/main.62f086fb.js.map"
   },
   "entrypoints": [
-    "static/css/main.53e5611c.css",
-    "static/js/main.3baaacf7.js"
+    "static/css/main.c30ff204.css",
+    "static/js/main.62f086fb.js"
   ]
 }
