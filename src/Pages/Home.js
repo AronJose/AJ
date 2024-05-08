@@ -6,21 +6,21 @@ function Home() {
   return (
     <section
       id="home"
-      className="md:pt-[82px] pt-[110px] relative overflow-hidden bg-cover bg-no-repeat md:h-[600px] text-black w-full shadow-2xl md:bg-blend-darken"
+      className="md:pt-[82px] pt-[110px] relative overflow-hidden bg-cover bg-no-repeat lg:h-[600px] text-black w-full shadow-2xl md:bg-blend-darken"
       style={{ backgroundImage: `url(${bg})` }}
     >
-      <div className="container mx-auto font-serif grid grid-cols-1 md:grid-cols-2">
-        <div className="flex flex-col justify-center md:pl-8  ">
-          <div className="flex space-x-5 md:pb-4 ">
-            <h2 className="text-black font-extrabold md:text-5xl sm:text-lg font-sans">
+      <div className="container mx-auto font-serif grid grid-cols-1 md:grid-cols-2 ">
+        <div className="flex flex-col md:justify-center lg:justify-center lg:items-start pl-2 ">
+          <div className="flex space-x-5 md:pb-4">
+            <h2 className="text-black font-extrabold lg:text-5xl md:text-3xl sm:text-lg font-sans">
               Hello,
             </h2>
-            <h2 className="text-red-600 font-extrabold md:text-5xl sm:text-lg">
+            <h2 className="text-red-600 font-extrabold lg:text-5xl md:text-3xl sm:text-lg">
               I'm
             </h2>
           </div>
-          <div className="flex flex-col justify-start whitespace-nowrap">
-            <h1 className="text-black font-extrabold md:text-[130px] sm:text-6xl text-3xl font-sans">
+          <div className="flex flex-col justify-start lg:whitespace-nowrap ">
+            <h1 className="text-black font-extrabold lg:text-[110px] sm:text-6xl text-5xl md:text-5xl font-sans">
               Aron Jose
             </h1>
             <div className="md:flex ">
@@ -65,10 +65,10 @@ function Home() {
               </a>
             </div>
           </div>
-          <div className="text-black text-base px-4 italic font-light md:leading-loose md:text-lg ">
-            <div className="md:flex gap-2">
+          <div className="text-black text-base px-4 italic font-light md:leading-loose md:text-lg">
+            <div className=" lg:flex lg:gap-2 whitespace-nowrap">
               <p>I am a passionate </p>
-              <p className="font-bold">Full-Stack Developer </p>
+              <p className="font-bold ">Full-Stack Developer </p>
               <p>with expertise in the</p>
             </div>
             <p> MERN stack.</p>

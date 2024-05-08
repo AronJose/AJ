@@ -7,14 +7,16 @@ const mySkills = [
     img: education,
     year: "2022",
     title: "Postgraduate",
-    clg: "Santhigiri College Vazhithala, Thodupuzha",
+    clg: "Santhigiri College,",
+    desc: "Vazhithala, Thodupuzha",
   },
   {
     id: 2,
     img: education,
     year: "2020",
     title: "Bachelor Degree",
-    clg: "St. Thomas College Pala",
+    clg: "St. Thomas College, ",
+    desc: "Pala,Kottayam",
   },
 ];
 const myDetails = [
@@ -25,8 +27,8 @@ const myDetails = [
   },
   {
     id: 2,
-    key: "Age",
-    value: "26",
+    key: "Date of Birth",
+    value: "19-June-1998",
   },
   {
     id: 3,
@@ -79,10 +81,12 @@ function AboutUs() {
                   {myDetails.map((details, index) => (
                     <div
                       key={index}
-                      className="grid grid-cols-2 ml-2 sm:ml-0 mt-6 text-lg sm:text-xl md:text-2xl"
+                      className="grid grid-cols-2 m-2  mt-6 text-base sm:text-sm md:text-xl lg:text-2xl"
                     >
-                      <p className="font-bold">{details.key}:</p>
-                      <p>{details.value}</p>
+                      <p className="font-semibold text-base">{details.key}:</p>
+                      <p className="text-base sm:text-base  ">
+                        {details.value}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -91,10 +95,10 @@ function AboutUs() {
                 <h1 className="text-black font-bold text-xl sm:text-2xl md:text-3xl tracking-widest ">
                   Education
                 </h1>
-                <div className="flex flex-col items-start md:ml-4 sm:ml-0 mt-4 whitespace-nowrap text-base sm:text-xl md:text-2xl text-justify">
+                <div className="flex flex-col items-start md:ml-4 sm:ml-0 mt-4 text-base sm:text-base md:text-lg lg:text-xl text-justify">
                   <p>
                     A proper education sets people up to grow personally,
-                    <br></br>professionally, and socially.
+                    professionally, and socially.
                   </p>
                   {mySkills.map((education) => (
                     <div
@@ -115,9 +119,14 @@ function AboutUs() {
                         <p className="font-bold text-base sm:text-lg md:text-xl">
                           {education.title}
                         </p>
-                        <p className="text-sm sm:text-base md:text-lg">
-                          {education.clg}
-                        </p>
+                        <div className="lg:flex">
+                          <p className="text-sm sm:text-base md:text-base">
+                            {education.clg}
+                          </p>
+                          <p className="text-sm sm:text-sm md:text-base">
+                            {education.desc}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   ))}

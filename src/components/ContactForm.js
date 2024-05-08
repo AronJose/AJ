@@ -47,7 +47,7 @@ function ContactForm() {
       >
         {(formik) => (
           <Form>
-            <div className="flex flex-col space-y-4 max-w-full pt-11">
+            <div className="flex flex-col space-y-4 max-w-full pt-11 m-2">
               <div className="flex space-x-6 ">
                 <Field
                   type="text"

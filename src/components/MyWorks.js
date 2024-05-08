@@ -5,7 +5,8 @@ import img3 from "../Assets/3.png";
 import img4 from "../Assets/4.png";
 import img5 from "../Assets/5.png";
 import img6 from "../Assets/6.png";
-import netflix from '../Assets/netflix.webp'
+import netflix from "../Assets/netflix.png";
+import Todo from "../Assets/Todo.png";
 import github from "../Assets/github.png";
 import workbg from "../Assets/work-bg.png";
 import arrowRight from "../Assets/arrow-symbol.png";
@@ -63,8 +64,8 @@ const projectData = [
   },
   {
     id: 8,
-    img1: netflix,
-    title: "REact-Todo",
+    img1: Todo,
+    title: "React-Todo",
     href: "https://github.com/AronJose/websocket",
     desc: "The project seamlessly integrates React.js with Node.js, utilizing WebSocket technology for real-time communication. It prioritizes real-time data exchange, showcasing innovation and technical expertise in building modern, interactive applications.",
   },
@@ -81,9 +82,8 @@ function MyWorks() {
     setCurrentPage(currentPage - 1);
   };
 
-
   return (
-    <div className="font-serif h-full">
+    <div className="font-serif h-full" id="work">
       <div className="container m-auto">
         <p className="md:text-3xl pl-2 tracking-widest md:pt-[50px] md:ml-14 font-bold text-start md:mb-4">
           My Works
@@ -93,12 +93,7 @@ function MyWorks() {
             In every task, my essence breathes its tale.
           </p>
         </div>
-        <div className="flex justify-center items-center">
-          {currentPage > 0 && (
-            <div className="w-[70px] pr-8 hover:w-[75px]">
-              <img src={arrowleft} alt="" onClick={prevPageWorks} />
-            </div>
-          )}
+        <div className="flex flex-col justify-center items-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 m-4">
             {/* ------------------array looping---------------------------- */}
             {projectData
@@ -106,7 +101,7 @@ function MyWorks() {
               .map((work) => (
                 <div
                   key={work.id}
-                  className="border-4 md:w-[300px] md:h-[250px] text-white shadow rounded-2xl"
+                  className="border-4 lg:w-[300px] lg:h-[250px] text-white shadow rounded-2xl"
                   style={{ backgroundImage: `url(${workbg})` }}
                 >
                   <div className="flex items-center justify-between pr-4">
@@ -135,7 +130,16 @@ function MyWorks() {
           </div>
           {projectData.length > (currentPage + 1) * 6 && (
             <div className="w-[51px] pl-8 hover:w-[55px] hover:rounded-full">
-              <img src={arrowRight} alt="" onClick={nextPageWorks} />
+              <a href="#work">
+                <img src={arrowRight} alt="" onClick={nextPageWorks} />
+              </a>
+            </div>
+          )}
+          {currentPage > 0 && (
+            <div className="w-[70px] pr-8 hover:w-[75px]">
+              <a href="#work">
+                <img src={arrowleft} alt="" onClick={prevPageWorks} />
+              </a>
             </div>
           )}
         </div>
