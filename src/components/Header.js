@@ -8,6 +8,9 @@ function Header() {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
   return (
     <div className="bg-white shadow-2xl md:bg-blend-darken md:flex md:justify-between md:items-center md:h-20 fixed top-0 left-0 w-full z-50">
       <div className="flex justify-between items-center px-4 py-3 md:px-10">
@@ -46,6 +49,7 @@ function Header() {
             <a
               href="#home"
               className="block md:inline-block text-black font-bold"
+              onClick={closeMenu}
             >
               Home
             </a>
@@ -54,6 +58,8 @@ function Header() {
             <a
               href="#about"
               className="block md:inline-block text-black font-bold"
+              onClick={closeMenu}
+
             >
               About
             </a>
@@ -62,6 +68,8 @@ function Header() {
             <a
               href="#portfolio"
               className="block md:inline-block text-black font-bold"
+              onClick={closeMenu}
+
             >
               Portfolio
             </a>
@@ -70,6 +78,8 @@ function Header() {
             <a
               href="#contact"
               className="block md:inline-block text-black font-bold"
+              onClick={closeMenu}
+
             >
               Contact Me
             </a>
