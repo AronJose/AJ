@@ -9,8 +9,8 @@ import netflix from "../Assets/netflix.png";
 import Todo from "../Assets/Todo.png";
 import github from "../Assets/github.png";
 import workbg from "../Assets/work-bg.png";
-import arrowRight from "../Assets/arrow-symbol.png";
-import arrowleft from "../Assets/arrow-left.png";
+import arrowRight from "../Assets/imgR.jpg";
+import arrowleft from "../Assets/imgL.jpg";
 
 const projectData = [
   {
@@ -84,24 +84,33 @@ function MyWorks() {
 
   return (
     <div className="font-serif h-full" id="work">
-      <div className="container m-auto">
-        <p className="md:text-3xl pl-2 tracking-widest md:pt-[50px] md:ml-14 font-bold text-start md:mb-4">
+      <div>
+        <p className="md:text-2xl sm:pl-2 md:pl-4 lg:pr-4 tracking-widest md:pt-[50px] md:ml-14 font-bold text-start md:mb-4">
           My Works
         </p>
         <div className="flex justify-center md:m-8">
-          <p className="font-bold md:text-5xl text-2xl pl-2">
+          <p className="font-bold md:text-4xl lg:text-5xl text-xl sm:text-lg sm:pl-2 md:pl-4 pl-2">
             In every task, my essence breathes its tale.
           </p>
         </div>
-        <div className="flex flex-col justify-center items-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 m-4">
+        <div className="flex lg:justify-between md:justify-around flex-cols justify-center items-center lg:w-full ">
+          <div className="">
+            {currentPage > 0 && (
+              <div className="w-[51px] hover:w-[55px] hover:rounded-full p-2">
+                <a href="#work">
+                  <img src={arrowleft} alt="" onClick={prevPageWorks} />
+                </a>
+              </div>
+            )}
+          </div>
+          <div className="lg:flex justify-center gap-2  ">
             {/* ------------------array looping---------------------------- */}
             {projectData
-              .slice(currentPage * 6, currentPage * 6 + 6)
+              .slice(currentPage * 3, currentPage * 3 + 3)
               .map((work) => (
                 <div
                   key={work.id}
-                  className="border-4 lg:w-[300px] lg:h-[250px] text-white shadow rounded-2xl"
+                  className="border-4 lg:w-[300px] sm:w-[250px] text-white shadow rounded-2xl"
                   style={{ backgroundImage: `url(${workbg})` }}
                 >
                   <div className="flex items-center justify-between pr-4">
@@ -128,20 +137,15 @@ function MyWorks() {
               ))}
             {/* ---------------------------------------- */}
           </div>
-          {projectData.length > (currentPage + 1) * 6 && (
-            <div className="w-[51px] pl-8 hover:w-[55px] hover:rounded-full">
-              <a href="#work">
-                <img src={arrowRight} alt="" onClick={nextPageWorks} />
-              </a>
-            </div>
-          )}
-          {currentPage > 0 && (
-            <div className="w-[70px] pr-8 hover:w-[75px]">
-              <a href="#work">
-                <img src={arrowleft} alt="" onClick={prevPageWorks} />
-              </a>
-            </div>
-          )}
+          <div className="">
+            {projectData.length > (currentPage + 1) * 3 && (
+              <div className="w-[51px] hover:w-[55px] hover:rounded-full p-2">
+                <a href="#work">
+                  <img src={arrowRight} alt="" onClick={nextPageWorks} />
+                </a>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
