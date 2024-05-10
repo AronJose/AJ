@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import img1 from "../Assets/1.png";
 import img2 from "../Assets/2.png";
 import img3 from "../Assets/3.png";
@@ -9,8 +9,7 @@ import netflix from "../Assets/netflix.png";
 import Todo from "../Assets/Todo.png";
 import github from "../Assets/github.png";
 import workbg from "../Assets/work-bg.png";
-import arrowRight from "../Assets/imgR.jpg";
-import arrowleft from "../Assets/imgL.jpg";
+import Slider from "react-slick";
 
 const projectData = [
   {
@@ -60,26 +59,86 @@ const projectData = [
     img1: netflix,
     title: "Netflix-Clone",
     href: "https://github.com/AronJose/websocket",
-    desc: "The project seamlessly integrates React.js with Node.js, utilizing WebSocket technology for real-time communication. It prioritizes real-time data exchange, showcasing innovation and technical expertise in building modern, interactive applications.",
+    desc: "React-powered Netflix clone, meticulously crafted with CSS, showcasing seamless UI/UX integration. A testament to my frontend expertise and dedication to pixel-perfect design.",
   },
   {
     id: 8,
     img1: Todo,
     title: "React-Todo",
     href: "https://github.com/AronJose/websocket",
-    desc: "The project seamlessly integrates React.js with Node.js, utilizing WebSocket technology for real-time communication. It prioritizes real-time data exchange, showcasing innovation and technical expertise in building modern, interactive applications.",
+    desc: "dynamic todo list built with React and styled with Tailwind CSS, offering a seamless user experience with responsive design.",
   },
 ];
 
 function MyWorks() {
-  const [currentPage, setCurrentPage] = useState(0);
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          background: "black",
+          color: "black",
+          borderRadius: "15px",
+        }}
+        onClick={onClick}
+      />
+    );
+  }
 
-  const nextPageWorks = () => {
-    setCurrentPage(currentPage + 1);
-  };
-
-  const prevPageWorks = () => {
-    setCurrentPage(currentPage - 1);
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          background: "black",
+          color: "black",
+          borderRadius: "15px",
+        }}
+        onClick={onClick}
+      />
+    );
+  }
+  var settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -93,26 +152,16 @@ function MyWorks() {
             In every task, my essence breathes its tale.
           </p>
         </div>
-        <div className="flex lg:justify-between md:justify-around flex-cols justify-center items-center lg:w-full ">
-          <div className="">
-            {currentPage > 0 && (
-              <div className="w-[51px] hover:w-[55px] hover:rounded-full p-2">
-                <a href="#work">
-                  <img src={arrowleft} alt="" onClick={prevPageWorks} />
-                </a>
-              </div>
-            )}
-          </div>
-          <div className="lg:flex justify-center gap-2  ">
-            {/* ------------------array looping---------------------------- */}
-            {projectData
-              .slice(currentPage * 3, currentPage * 3 + 3)
-              .map((work) => (
+        <div className="flex flex-col justify-center">
+          <div className="container m-auto">
+            <Slider {...settings}>
+              {projectData.map((work) => (
                 <div
                   key={work.id}
-                  className="border-4 lg:w-[300px] sm:w-[250px] text-white shadow rounded-2xl"
+                  className="border-4 text-white shadow rounded-2xl bg-gray-500 "
                   style={{ backgroundImage: `url(${workbg})` }}
                 >
+                  {/* headeing section */}
                   <div className="flex items-center justify-between pr-4">
                     <p className="font-extrabold text-xl p-5">{work.title}</p>
                     <a href={work.href}>
@@ -123,28 +172,23 @@ function MyWorks() {
                       />
                     </a>
                   </div>
+                  {/* ---------------- */}
+
+                  {/* hover desc */}
                   <div className="relative">
                     <img
                       src={work.img1}
                       alt=""
-                      className="md:h-[175px] md:w-[400px] rounded-b-2xl"
+                      className="h-[200px] w-[381px] rounded-b-2xl"
                     />
                     <div className="absolute rounded-b-xl top-0 left-0 w-full h-full opacity-0 transition-opacity duration-300 hover:opacity-100 bg-gray-900 bg-opacity-85 flex justify-center items-center">
                       <p className="text-white text-justify p-2">{work.desc}</p>
                     </div>
                   </div>
+                  {/* ---------- */}
                 </div>
               ))}
-            {/* ---------------------------------------- */}
-          </div>
-          <div className="">
-            {projectData.length > (currentPage + 1) * 3 && (
-              <div className="w-[51px] hover:w-[55px] hover:rounded-full p-2">
-                <a href="#work">
-                  <img src={arrowRight} alt="" onClick={nextPageWorks} />
-                </a>
-              </div>
-            )}
+            </Slider>
           </div>
         </div>
       </div>
@@ -153,3 +197,4 @@ function MyWorks() {
 }
 
 export default MyWorks;
+
