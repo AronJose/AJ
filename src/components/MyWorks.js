@@ -111,9 +111,19 @@ function MyWorks() {
     slidesToShow: 3,
     slidesToScroll: 1,
     initialSlide: 0,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    
     responsive: [
+      {
+        breakpoint: 2500,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+          nextArrow: <SampleNextArrow />,
+          prevArrow: <SamplePrevArrow />,
+        },
+      },
       {
         breakpoint: 1024,
         settings: {
@@ -121,6 +131,8 @@ function MyWorks() {
           slidesToScroll: 1,
           infinite: true,
           dots: true,
+          nextArrow: <SampleNextArrow />,
+          prevArrow: <SamplePrevArrow />,
         },
       },
       {
@@ -129,6 +141,8 @@ function MyWorks() {
           slidesToShow: 2,
           slidesToScroll: 1,
           initialSlide: 2,
+          nextArrow: <SampleNextArrow />,
+          prevArrow: <SamplePrevArrow />,
         },
       },
       {
@@ -143,17 +157,17 @@ function MyWorks() {
 
   return (
     <div className="font-serif h-full" id="work">
-      <div>
-        <p className="md:text-2xl sm:pl-2 md:pl-4 lg:pr-4 tracking-widest md:pt-[50px] md:ml-14 font-bold text-start md:mb-4">
+      <div >
+        <p className="md:text-2xl pl-8 md:pl-4 lg:pr-4 tracking-widest md:pt-[50px] md:ml-14 font-bold text-start md:mb-4">
           My Works
         </p>
-        <div className="flex justify-center md:m-8">
-          <p className="font-bold md:text-4xl lg:text-5xl text-xl sm:text-lg sm:pl-2 md:pl-4 pl-2">
+        <div className="flex lg:justify-center md:m-8">
+          <p className="font-bold md:text-4xl lg:text-5xl text-lg sm:text-lg pl-3 md:pl-4 pl-8">
             In every task, my essence breathes its tale.
           </p>
         </div>
-        <div className="flex flex-col justify-center">
-          <div className="container m-auto">
+        <div className="flex flex-col justify-center m-4">
+          <div className="container m-auto ">
             <Slider {...settings}>
               {projectData.map((work) => (
                 <div
@@ -179,7 +193,7 @@ function MyWorks() {
                     <img
                       src={work.img1}
                       alt=""
-                      className="h-[200px] w-[381px] rounded-b-2xl"
+                      className="h-[200px] w-full rounded-b-2xl"
                     />
                     <div className="absolute rounded-b-xl top-0 left-0 w-full h-full opacity-0 transition-opacity duration-300 hover:opacity-100 bg-gray-900 bg-opacity-85 flex justify-center items-center">
                       <p className="text-white text-justify p-2">{work.desc}</p>

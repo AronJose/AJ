@@ -12,7 +12,7 @@ function Home() {
       <div className="container mx-auto font-serif grid grid-cols-1 md:grid-cols-2 ">
         <div className="flex flex-col md:justify-center lg:justify-center lg:items-start pl-2 ">
           <div className="flex space-x-5 md:pb-4">
-            <h2 className="text-black font-extrabold lg:text-5xl md:text-3xl sm:text-lg font-sans">
+            <h2 className="text-black font-extrabold lg:text-5xl pl-2 md:text-3xl sm:text-lg font-sans">
               Hello,
             </h2>
             <h2 className="text-red-600 font-extrabold lg:text-5xl md:text-3xl sm:text-lg">
@@ -20,7 +20,7 @@ function Home() {
             </h2>
           </div>
           <div className="flex flex-col justify-start lg:whitespace-nowrap ">
-            <h1 className="text-black font-extrabold lg:text-[110px] sm:text-6xl text-5xl md:text-5xl font-sans">
+            <h1 className="text-black font-extrabold pl-2 lg:text-[110px] sm:text-6xl text-5xl md:text-5xl font-sans">
               Aron Jose
             </h1>
             <div className="md:flex ">

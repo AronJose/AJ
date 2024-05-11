@@ -34,11 +34,11 @@ function ContactMe() {
       <span className="absolute -top-[80px]" id="contact"></span>
       <div className="text-black font-serif  h-[1050px] lg:h-[900px] md:h-[1000px] ">
         <div className="container m-auto sm:px-10 ">
-          <h4 className="text-black font-bold md:text-3xl pl-2 sm:text-xl text-xl md:mt-10 tracking-widest">
+          <h4 className="text-black font-bold md:text-3xl pl-6 sm:text-xl text-xl md:mt-10 tracking-widest">
             Contact Me
           </h4>
-          <div className="flex md:justify-center">
-            <p className="font-bold md:text-3xl lg:text-5xl md:m-4 sm:text-xl text-lg pl-2 ">
+          <div className="flex lg:justify-center">
+            <p className="font-bold md:text-3xl lg:text-5xl md:m-4 sm:text-xl text-lg pl-8 ">
               Let us weave our strengths as one
             </p>
           </div>
