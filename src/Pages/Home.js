@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ChatbotWidget from "../components/ChatbotWidget";
 
 const linkedin = "https://www.linkedin.com/in/aron-jose-5a5640201/";
 const github = "https://github.com/AronJose?tab=repositories";
@@ -119,5 +120,6 @@ export default function Home() {
     {modal && <ProjectModal onClose={() => setModal(false)}/>}
     {companyModal && <CompanyModal company={companyModal} onClose={() => setCompanyModal(null)}/>}
     {resumeOpen && <ResumeModal onClose={() => setResumeOpen(false)}/>}
+    <ChatbotWidget />
   </main>;
 }
