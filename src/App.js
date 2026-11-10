@@ -1,15 +1,9 @@
 import { React } from "react";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Public from "./Pages/Common-component/Public";
+import Home from "./Pages/Home";
 
 function App() {
   return (
-    <div >
-      <Header />
-      <Public className="h-full" />
-      <Footer />
-    </div>
+    <Home />
   );
 }
 
