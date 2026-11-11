@@ -1,27 +1,65 @@
-# Aron Jose Portfolio
+# Ask Aron AI deployment
 
-The portfolio frontend is in the sibling `AJ/frontend/` folder. This `AJ_server/` folder contains the **Ask Aron AI** server code: the Vercel Function handler, deployment config, and verified chatbot knowledge base.
+The repository contains two separate applications: the Create React App portfolio in `frontend/` and the Node.js chatbot function in `AJ_server/`. Deploy them as two Vercel projects from the same GitHub repository. This keeps both on Vercel and avoids moving or rewriting the existing portfolio.
 
-## Local development
+## 1. Deploy the backend
 
-1. Install frontend dependencies with `cd ../AJ/frontend && npm install`.
-2. Create `.env.local` in this folder with `AI_PROVIDER=gemini` and `GEMINI_API_KEY=your_gemini_api_key`.
-3. Install Vercel CLI (`npm install --global vercel`) and run `vercel dev` from this folder. In Vercel, set the project root directory to `AJ_server`; the config builds the sibling `AJ/frontend/` app and exposes `/api/chat` from `api/chat.js`.
+Create a Vercel project from `AronJose/AJ` with:
 
-The Gemini key must stay in server environment variables. Do not use a `REACT_APP_` variable for secrets.
+| Setting | Value |
+| --- | --- |
+| Root Directory | `AJ_server` |
+| Framework Preset | Other |
+| Build Command | Leave default / blank |
+| Install Command | Leave default |
+| Output Directory | Leave default / blank |
 
-## Deploy to Vercel
+The function is auto-detected from `api/chat.js` and is available at `/api/chat`. `vercel.json` intentionally has no legacy `builds` or catch-all `routes` rules.
 
-1. Push the repository to GitHub.
-2. In Vercel, import the repository and set **Root Directory** to `AJ_server`. The `AJ_server/vercel.json` config builds the app in `AJ/frontend/`, while the function entry point is `AJ_server/api/chat.js`.
-3. Add `AI_PROVIDER=gemini` and `GEMINI_API_KEY` under **Project Settings → Environment Variables** for Production (and Preview/Development if needed). Optionally set `GEMINI_MODEL`.
-4. Deploy. Vercel hosts the static portfolio and `/api/chat` in the same project.
-5. Assign `aronjose.in` under **Project Settings → Domains** and apply the DNS records Vercel shows. Production verification requires a configured key and completed deployment.
+Add these Production environment variables in Vercel:
 
-The existing downloadable resume is served from `AJ/frontend/public/AronResume.pdf` at `/AronResume.pdf`.
+| Name | Value |
+| --- | --- |
+| `AI_PROVIDER` | `gemini` |
+| `GEMINI_API_KEY` | Your Gemini API key |
+| `CORS_ORIGIN` | `https://aronjose.in,https://www.aronjose.in` |
 
-## Chat API
+Add the same values to Preview if you want to test preview deployments. For preview browser tests, include the exact preview frontend origin in `CORS_ORIGIN` as a comma-separated entry. After deploying, copy the backend deployment domain from **Vercel → Project → Settings → Domains** (or the deployment page). Do not guess this URL.
 
-`api/chat.js` exposes `POST /api/chat` and delegates to `chat.js`. It accepts `{ "message": "...", "history": [{"role":"user|assistant","content":"..."}] }` and responds with `{ "success": true, "answer": "..." }`. `aron-knowledge.json` contains the profile data. Inputs and recent history are bounded, and an in-memory per-function-instance rate limit is applied. Vercel's shared hosting does not make in-memory limits globally consistent; use platform-level protection if stricter global limits are required.
+## 2. Deploy the frontend
 
-Only Gemini is implemented. `AI_PROVIDER` is reserved for future provider selection; no OpenAI integration is included yet.
+Create another Vercel project from the same repository with:
+
+| Setting | Value |
+| --- | --- |
+| Root Directory | `frontend` |
+| Framework Preset | Create React App |
+| Build Command | `npm run build` (or the detected default) |
+| Install Command | `npm install` (or the detected default) |
+| Output Directory | `build` (or the detected default) |
+
+Set this Production environment variable after the backend is deployed:
+
+| Name | Value |
+| --- | --- |
+| `REACT_APP_CHAT_API_URL` | `https://<backend-domain-from-vercel>/api/chat` |
+
+Replace the placeholder with the actual backend URL shown in Vercel. CRA embeds `REACT_APP_*` variables at build time, so redeploy the frontend after changing this value. Assign `aronjose.in` to the frontend Vercel project and follow Vercel's domain/DNS instructions. Keep the backend on its generated Vercel domain unless you want to configure another domain for it.
+
+## 3. Verify
+
+Send a POST request to `https://<backend-domain-from-vercel>/api/chat` with JSON:
+
+```json
+{"message":"What projects has Aron worked on?","history":[]}
+```
+
+Expect `{ "success": true, "answer": "..." }` when the Gemini key is configured. Then open `https://aronjose.in`, open Ask Aron AI, and send a question. The backend accepts browser requests from the configured CORS origins only. A request without an `Origin` header can also be used for command-line checks.
+
+## Local environment safety
+
+Use `AJ_server/.env.local` for local values. `.env*` files are ignored by Git except `.env.example`, which contains placeholders only. Never add a real Gemini key to frontend variables or source code. If a real key was ever committed to GitHub, revoke and replace it in Google AI Studio.
+
+## API behavior
+
+`api/chat.js` is the Vercel entry point and delegates to `chat.js`. It reads `aron-knowledge.json`, bounds the message and history sizes, keeps conversation context supplied by the client, and returns a verified-information fallback when a response cannot be grounded. Gemini errors are returned as safe API errors without exposing the key.

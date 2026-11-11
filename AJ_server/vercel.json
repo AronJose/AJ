@@ -1,4 +1,1 @@
-{
-  "buildCommand": "cd ../AJ/frontend && npm ci && npm run build",
-  "outputDirectory": "../AJ/frontend/build"
-}
+{}

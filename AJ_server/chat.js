@@ -9,6 +9,24 @@ function send(res, status, body) {
   res.status(status).json(body);
 }
 
+function applyCors(req, res) {
+  const origin = req.headers.origin;
+  const allowedOrigins = (process.env.CORS_ORIGIN || "https://aronjose.in,https://www.aronjose.in")
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean);
+
+  res.setHeader("Vary", "Origin");
+  if (!origin) return true;
+  if (!allowedOrigins.includes(origin)) return false;
+
+  res.setHeader("Access-Control-Allow-Origin", origin);
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Max-Age", "86400");
+  return true;
+}
+
 function rateLimited(key) {
   const now = Date.now();
   const recent = (windows.get(key) || []).filter((time) => now - time < 60_000);
@@ -19,6 +37,11 @@ function rateLimited(key) {
 }
 
 module.exports = async function handler(req, res) {
+  if (!applyCors(req, res)) return send(res, 403, { success: false, error: "Origin not allowed." });
+  if (req.method === "OPTIONS") {
+    res.setHeader("Cache-Control", "no-store");
+    return res.status(204).end();
+  }
   if (req.method !== "POST") return send(res, 405, { success: false, error: "Method not allowed." });
   const forwarded = req.headers["x-forwarded-for"] || "unknown";
   if (rateLimited(forwarded.split(",")[0].trim())) return send(res, 429, { success: false, error: "Too many messages. Please wait a minute and try again." });
