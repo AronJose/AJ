@@ -42,9 +42,9 @@ Set this Production environment variable after the backend is deployed (the code
 
 | Name | Value |
 | --- | --- |
-| `REACT_APP_CHAT_API_URL` | `https://aj-server-seven.vercel.app/api/chat` |
+| `REACT_APP_CHAT_API_URL` | `https://aj-server-seven.vercel.app` |
 
-CRA embeds `REACT_APP_*` variables at build time, so redeploy the frontend after changing this value. Assign `aronjose.in` to the frontend Vercel project and follow Vercel's domain/DNS instructions. Keep the backend on its generated Vercel domain unless you want to configure another domain for it.
+This is the backend base URL; the frontend appends `/api/chat` exactly once (and removes an accidental `/api` or `/api/chat` suffix). CRA embeds `REACT_APP_*` variables at build time, so redeploy the frontend after changing this value. Assign `aronjose.in` to the frontend Vercel project and follow Vercel's domain/DNS instructions. Keep the backend on its generated Vercel domain unless you want to configure another domain for it.
 
 ## 3. Verify
 
@@ -59,6 +59,8 @@ Expect `{ "success": true, "answer": "..." }` when the Gemini key is configured.
 ## Local environment safety
 
 Use `AJ_server/.env.local` for local values. `.env*` files are ignored by Git except `.env.example`, which contains placeholders only. Never add a real Gemini key to frontend variables or source code. If a real key was ever committed to GitHub, revoke and replace it in Google AI Studio.
+
+For local frontend development, copy `frontend/.env.example` to `frontend/.env.local` if you need to override the default backend base URL. Restart the CRA development server after changing it. Use the base origin only; the app constructs `/api/chat` itself.
 
 ## API behavior
 

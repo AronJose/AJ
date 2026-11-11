@@ -9,7 +9,11 @@ const suggestions = [
   "Contact Aron",
 ];
 const welcome = "Hi! 👋 I'm Aron's AI assistant. I can help you learn about his professional experience, technical skills, projects, and background. What would you like to know?";
-const chatApiUrl = process.env.REACT_APP_CHAT_API_URL || "https://aj-server-seven.vercel.app/api/chat";
+const chatApiBaseUrl = (process.env.REACT_APP_CHAT_API_URL || "https://aj-server-seven.vercel.app")
+  .trim()
+  .replace(/\/+$/, "")
+  .replace(/(?:\/api)+(?:\/chat)?$/i, "");
+const chatApiUrl = `${chatApiBaseUrl}/api/chat`;
 
 export default function ChatbotWidget() {
   const [open, setOpen] = useState(false);
@@ -54,7 +58,11 @@ export default function ChatbotWidget() {
           : response.status >= 500
             ? "Ask Aron AI is temporarily unavailable. Please try again later."
             : "I couldn't process that message. Please try again.");
-        console.error("Ask Aron AI request rejected", { status: response.status, code: data.code });
+        console.error("Ask Aron AI request rejected", {
+          status: response.status,
+          code: data.code,
+          error: typeof data.error === "string" ? data.error : undefined,
+        });
         throw new Error(visitorMessage);
       }
 
