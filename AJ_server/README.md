@@ -14,7 +14,7 @@ Create a Vercel project from `AronJose/AJ` with:
 | Install Command | Leave default |
 | Output Directory | Leave default / blank |
 
-The function is auto-detected from `api/chat.js` and is available at `/api/chat`. `vercel.json` intentionally has no legacy `builds` or catch-all `routes` rules.
+Functions are auto-detected from the `api/` directory. The chatbot is available at `/api/chat`; `/api/health` returns a small GET health check. The root URL `/` may return 404 because this project serves APIs only. `vercel.json` intentionally has no legacy `builds` or catch-all `routes` rules.
 
 Add these Production environment variables in Vercel:
 
@@ -24,7 +24,7 @@ Add these Production environment variables in Vercel:
 | `GEMINI_API_KEY` | Your Gemini API key |
 | `CORS_ORIGIN` | `https://aronjose.in,https://www.aronjose.in` |
 
-The API also explicitly permits `http://localhost:3000` and `http://127.0.0.1:3000` for local CRA development; no wildcard origin is used. Add the same environment values to Preview if you want to test preview deployments. For preview browser tests, include the exact preview frontend origin in `CORS_ORIGIN` as a comma-separated entry. After deploying, copy the backend deployment domain from **Vercel → Project → Settings → Domains** (or the deployment page). Do not guess this URL.
+The backend defaults to the stable `gemini-3.5-flash` model; set `GEMINI_MODEL` only when intentionally selecting another supported model. The API also explicitly permits `http://localhost:3000` and `http://127.0.0.1:3000` for local CRA development; no wildcard origin is used. Add the same environment values to Preview if you want to test preview deployments. For preview browser tests, include the exact preview frontend origin in `CORS_ORIGIN` as a comma-separated entry. After deploying, copy the backend deployment domain from **Vercel → Project → Settings → Domains** (or the deployment page). Do not guess this URL.
 
 ## 2. Deploy the frontend
 
