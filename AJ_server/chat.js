@@ -11,14 +11,19 @@ function send(res, status, body) {
 
 function applyCors(req, res) {
   const origin = req.headers.origin;
-  const allowedOrigins = (process.env.CORS_ORIGIN || "https://aronjose.in,https://www.aronjose.in")
+  const productionOrigins = (process.env.CORS_ORIGIN || "https://aronjose.in,https://www.aronjose.in")
     .split(",")
     .map((value) => value.trim())
     .filter(Boolean);
+  const allowedOrigins = new Set([
+    ...productionOrigins,
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+  ]);
 
   res.setHeader("Vary", "Origin");
   if (!origin) return true;
-  if (!allowedOrigins.includes(origin)) return false;
+  if (!allowedOrigins.has(origin)) return false;
 
   res.setHeader("Access-Control-Allow-Origin", origin);
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");

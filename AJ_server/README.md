@@ -24,7 +24,7 @@ Add these Production environment variables in Vercel:
 | `GEMINI_API_KEY` | Your Gemini API key |
 | `CORS_ORIGIN` | `https://aronjose.in,https://www.aronjose.in` |
 
-Add the same values to Preview if you want to test preview deployments. For preview browser tests, include the exact preview frontend origin in `CORS_ORIGIN` as a comma-separated entry. After deploying, copy the backend deployment domain from **Vercel → Project → Settings → Domains** (or the deployment page). Do not guess this URL.
+The API also explicitly permits `http://localhost:3000` and `http://127.0.0.1:3000` for local CRA development; no wildcard origin is used. Add the same environment values to Preview if you want to test preview deployments. For preview browser tests, include the exact preview frontend origin in `CORS_ORIGIN` as a comma-separated entry. After deploying, copy the backend deployment domain from **Vercel → Project → Settings → Domains** (or the deployment page). Do not guess this URL.
 
 ## 2. Deploy the frontend
 
