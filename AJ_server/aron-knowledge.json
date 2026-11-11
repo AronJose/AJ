@@ -1,0 +1,39 @@
+{
+  "personalInformation": {
+    "name": "Aron Jose",
+    "title": "Data Engineer",
+    "location": "Kochi, Kerala, India",
+    "totalExperience": "4+ years of software development experience"
+  },
+  "professionalSummary": "Data Engineering professional with 4+ years of total software development experience and a focus on building data pipelines and analytics-ready datasets using Snowflake, SQL, Python, PySpark, Snowpark, and dbt. Familiar with AWS S3 for cloud-based data storage and Bronze, Silver, and Gold layers for data processing. Experienced in data transformation, data validation, and preparing structured datasets for analytics and reporting. A full-stack development background in React, React Native, and Node.js provides an understanding of end-to-end application and data workflows.",
+  "technicalSkills": {
+    "dataEngineering": ["Snowflake", "Snowpark", "dbt", "PySpark", "Python", "SQL", "AWS S3", "Data Engineering Pipelines", "Data Warehousing", "Medallion Architecture", "Data Integration", "Data Transformation", "Data Quality and Validation"],
+    "fullStackDevelopment": ["React.js", "React Native", "Node.js", "Flutter", "JavaScript", "HTML", "CSS", "Tailwind CSS", "REST APIs", "Socket.io"],
+    "databases": ["PostgreSQL", "MySQL", "MongoDB"],
+    "tools": ["Git", "VS Code", "JIRA", "Confluence", "Agile/Scrum"]
+  },
+  "currentExperience": {
+    "role": "Data Engineer",
+    "company": "Toobler Technologies",
+    "location": "Kochi, India",
+    "dates": "June 2023 – Present",
+    "project": "Enterprise Insurance Data Analytics Platform for a UAE-based client",
+    "technologies": ["AWS S3", "Snowflake", "dbt", "Python", "PySpark", "SQL", "Snowpark"],
+    "responsibilities": ["Worked on a data analytics platform designed to process and organize insurance-related data from broker and customer domains.", "Assisted in building data pipelines to load raw data from AWS S3 into Snowflake.", "Worked with Bronze, Silver, and Gold layers of Medallion Architecture.", "Used SQL, Python, PySpark, Snowpark, and dbt for data transformation and validation.", "Collaborated with team members to understand data requirements and troubleshoot pipeline issues.", "Supported data consistency and quality standards."]
+  },
+  "previousExperience": {
+    "role": "Full Stack Developer",
+    "company": "Innovature",
+    "location": "Kochi, India",
+    "dates": "October 2021 – June 2023",
+    "responsibilities": ["Developed cross-platform applications using React.js, React Native, Flutter, and Node.js.", "Worked on construction site management, social/dating, and e-commerce applications.", "Developed responsive web and mobile interfaces.", "Implemented CRUD workflows and real-time communication using Socket.io.", "Implemented state management and API integrations using Redux/Rematch, Dio, and Axios.", "Developed backend functionality using MySQL and REST APIs.", "Worked across frontend and backend application functionality."]
+  },
+  "projects": [{"name": "Enterprise Insurance Data Analytics Platform", "description": "An insurance analytics platform for broker and customer domain data, involving AWS S3 to Snowflake ingestion, Medallion Architecture layers, transformations, validation, and analytics-ready datasets.", "clientLocation": "UAE-based client", "technologies": ["AWS S3", "Snowflake", "dbt", "Python", "PySpark", "SQL", "Snowpark"]}],
+  "education": ["Master of Computer Applications (MCA)", "Bachelor of Science in Mathematics"],
+  "contactInformation": {"email": "aronjose63@gmail.com", "phone": "+91 9074484624", "location": "Kochi, Kerala, India", "resume": "/AronResume.pdf"},
+  "frequentlyAskedQuestions": [
+    {"question": "Can I download Aron's resume?", "answer": "Yes. The resume is available at /AronResume.pdf."},
+    {"question": "How can I contact Aron?", "answer": "Email Aron at aronjose63@gmail.com or call +91 9074484624."},
+    {"question": "Does Aron have data engineering experience?", "answer": "Yes. He has worked as a Data Engineer at Toobler Technologies since June 2023 on an enterprise insurance data analytics platform."}
+  ]
+}
