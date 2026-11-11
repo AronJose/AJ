@@ -38,13 +38,13 @@ Create another Vercel project from the same repository with:
 | Install Command | `npm install` (or the detected default) |
 | Output Directory | `build` (or the detected default) |
 
-Set this Production environment variable after the backend is deployed:
+Set this Production environment variable after the backend is deployed (the code defaults to the current backend URL shown below, but an explicit Vercel setting is recommended):
 
 | Name | Value |
 | --- | --- |
-| `REACT_APP_CHAT_API_URL` | `https://<backend-domain-from-vercel>/api/chat` |
+| `REACT_APP_CHAT_API_URL` | `https://aj-server-seven.vercel.app/api/chat` |
 
-Replace the placeholder with the actual backend URL shown in Vercel. CRA embeds `REACT_APP_*` variables at build time, so redeploy the frontend after changing this value. Assign `aronjose.in` to the frontend Vercel project and follow Vercel's domain/DNS instructions. Keep the backend on its generated Vercel domain unless you want to configure another domain for it.
+CRA embeds `REACT_APP_*` variables at build time, so redeploy the frontend after changing this value. Assign `aronjose.in` to the frontend Vercel project and follow Vercel's domain/DNS instructions. Keep the backend on its generated Vercel domain unless you want to configure another domain for it.
 
 ## 3. Verify
 

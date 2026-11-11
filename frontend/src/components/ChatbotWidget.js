@@ -9,7 +9,7 @@ const suggestions = [
   "Contact Aron",
 ];
 const welcome = "Hi! 👋 I'm Aron's AI assistant. I can help you learn about his professional experience, technical skills, projects, and background. What would you like to know?";
-const chatApiUrl = process.env.REACT_APP_CHAT_API_URL || "/api/chat";
+const chatApiUrl = process.env.REACT_APP_CHAT_API_URL || "https://aj-server-seven.vercel.app/api/chat";
 
 export default function ChatbotWidget() {
   const [open, setOpen] = useState(false);
@@ -29,13 +29,41 @@ export default function ChatbotWidget() {
     setLoading(true);
     try {
       const history = messages.filter((message) => message.role !== "assistant" || message.content !== welcome).slice(-10);
-      const response = await fetch(chatApiUrl, {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: question, history }),
-      });
-      const data = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(data.error || "The assistant is temporarily unavailable. Please try again.");
-      setMessages((current) => [...current, { role: "assistant", content: data.answer || data.reply }]);
+      let response;
+      try {
+        response = await fetch(chatApiUrl, {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: question, history }),
+        });
+      } catch (error) {
+        console.error("Ask Aron AI network request failed", { name: error.name });
+        throw new Error("I couldn't connect to Ask Aron AI. Check your connection and try again.");
+      }
+
+      let data;
+      try {
+        data = await response.json();
+      } catch (error) {
+        console.error("Ask Aron AI returned invalid JSON", { status: response.status });
+        throw new Error("Ask Aron AI returned an invalid response. Please try again.");
+      }
+
+      if (!response.ok) {
+        const visitorMessage = data.error || (response.status === 429
+          ? "Too many messages. Please wait a minute and try again."
+          : response.status >= 500
+            ? "Ask Aron AI is temporarily unavailable. Please try again later."
+            : "I couldn't process that message. Please try again.");
+        console.error("Ask Aron AI request rejected", { status: response.status, code: data.code });
+        throw new Error(visitorMessage);
+      }
+
+      const answer = data.answer || data.reply;
+      if (typeof answer !== "string" || !answer.trim()) {
+        console.error("Ask Aron AI returned an invalid response shape", { status: response.status });
+        throw new Error("Ask Aron AI returned an invalid response. Please try again.");
+      }
+      setMessages((current) => [...current, { role: "assistant", content: answer }]);
     } catch (error) {
       setMessages((current) => [...current, { role: "assistant", content: error.message || "I couldn't connect just now. Please try again." }]);
     } finally { setLoading(false); }
