@@ -9,6 +9,7 @@ const suggestions = [
   "Contact Aron",
 ];
 const welcome = "Hi! 👋 I'm Aron's AI assistant. I can help you learn about his professional experience, technical skills, projects, and background. What would you like to know?";
+const chatApiUrl = process.env.REACT_APP_CHAT_API_URL || "/api/chat";
 
 export default function ChatbotWidget() {
   const [open, setOpen] = useState(false);
@@ -28,7 +29,7 @@ export default function ChatbotWidget() {
     setLoading(true);
     try {
       const history = messages.filter((message) => message.role !== "assistant" || message.content !== welcome).slice(-10);
-      const response = await fetch("/api/chat", {
+      const response = await fetch(chatApiUrl, {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: question, history }),
       });
